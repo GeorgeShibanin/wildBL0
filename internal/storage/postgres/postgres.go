@@ -74,7 +74,7 @@ func (s *StoragePostgres) PutData(model storage.Orders) (storage.Id, error) {
 		log.Println("unexpected rows affected value:", model)
 		return "", errors.Wrap(err, fmt.Sprintf("unexpected rows affected value: %v", tag.RowsAffected()))
 	}
-	log.Println("put order to cache", modelJson)
+	log.Println("put order to cache")
 	s.inMemory[order.OrderUID] = model
 	return storage.Id(order.OrderUID), nil
 }
